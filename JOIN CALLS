@@ -1,0 +1,51 @@
+SELECT DISTINCT Posts.ID, PostMeta.post_id, Posts.post_parent as PostParent_value,   Posts.post_type,
+
+                    hoejde.meta_key as tween_stoerrelse, hoejde.meta_value as hoejde_value,
+                    tween_stoerrelse.meta_key as tween_stoerrelse, tween_stoerrelse.meta_value as tween_stoerrelse_value,
+                    aar.meta_key as aar, aar.meta_value as aar_value,
+                    voksen_stoerrelse.meta_key as voksen_stoerrelse, voksen_stoerrelse.meta_value as voksen_stoerrelse_value,
+                    bukse_waist.meta_key as bukse_waist, bukse_waist.meta_value as bukse_waist_value,
+                    bukser_laengde.meta_key as bukser_laengde, bukser_laengde.meta_value as bukser_laengde_value,
+                    sko_stoerrelse.meta_key as sko_stoerrelse, sko_stoerrelse.meta_value as sko_stoerrelse_value,
+                    stroemper_str.meta_key as stroemper_str, stroemper_str.meta_value as stroemper_str_value,
+                    bh_stoerrelse.meta_key as bh_stoerrelse, bh_stoerrelse.meta_value as bh_stoerrelse_value,
+                    bh_skaal_stoerrelse.meta_key as bh_skaal_stoerrelse, bh_skaal_stoerrelse.meta_value as bh_skaal_stoerrelse_value,
+                    baelte_laengde.meta_key as baelte_laengde, baelte_laengde.meta_value as baelte_laengde_value,
+                    leverandoer_stoerrelse.meta_key as leverandoer_stoerrelse, leverandoer_stoerrelse.meta_value as leverandoer_stoerrelse_value
+
+
+    FROM nw_postmeta
+    INNER JOIN nw_posts as Posts ON post_id = Posts.ID
+         LEFT JOIN nw_postmeta as PostMeta ON ID = PostMeta.post_id
+         LEFT JOIN nw_postmeta as hoejde ON ID = hoejde.post_id
+         LEFT JOIN nw_postmeta as tween_stoerrelse ON ID = tween_stoerrelse.post_id
+         LEFT JOIN nw_postmeta as aar ON ID = aar.post_id
+         LEFT JOIN nw_postmeta as voksen_stoerrelse ON ID = voksen_stoerrelse.post_id
+         LEFT JOIN nw_postmeta as bukse_waist ON ID = bukse_waist.post_id
+         LEFT JOIN nw_postmeta as bukser_laengde ON ID = bukser_laengde.post_id
+         LEFT JOIN nw_postmeta as sko_stoerrelse ON ID = sko_stoerrelse.post_id
+         LEFT JOIN nw_postmeta as stroemper_str ON ID = stroemper_str.post_id
+         LEFT JOIN nw_postmeta as bh_stoerrelse ON ID = bh_stoerrelse.post_id
+         LEFT JOIN nw_postmeta as bh_skaal_stoerrelse ON ID = bh_skaal_stoerrelse.post_id
+         LEFT JOIN nw_postmeta as baelte_laengde ON ID = baelte_laengde.post_id
+         LEFT JOIN nw_postmeta as leverandoer_stoerrelse ON ID = leverandoer_stoerrelse.post_id
+
+
+
+
+    WHERE hoejde.meta_key = 'attribute_pa_hoejde' AND
+          tween_stoerrelse.meta_key = 'attribute_pa_tween-stoerrelse' AND
+          aar.meta_key = 'attribute_pa_aar' AND
+          voksen_stoerrelse.meta_key = 'attribute_pa_voksen-stoerrelse' AND
+          bukse_waist.meta_key = 'attribute_pa_bukse-waist' AND
+          bukser_laengde.meta_key = 'attribute_pa_bukser-laengde' AND
+          sko_stoerrelse.meta_key = 'attribute_pa_sko-stoerrelse' AND
+          stroemper_str.meta_key = 'attribute_pa_stroemper-str' AND
+          bh_stoerrelse.meta_key = 'attribute_pa_bh-stoerrelse' AND
+          bh_skaal_stoerrelse.meta_key = 'attribute_pa_bh-skaal-stoerrelse' AND
+          baelte_laengde.meta_key = 'attribute_pa_baelte-laengde' AND
+          leverandoer_stoerrelse.meta_key = 'attribute_pa_leverandoer-stoerrelse' AND
+
+
+    PostMeta.post_id IN (1362580, 1362581, 1362582, 1362583, 1362584, 1362585
+) GROUP BY PostMeta.post_id
